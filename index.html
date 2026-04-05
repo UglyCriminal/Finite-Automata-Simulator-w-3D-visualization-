@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finite Automata Simulator</title>
+ 
+  <!-- Libraries -->
+  <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+ 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+ 
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div class="logo-icon">⬡</div>
+    <h1>Finite Automata Simulator</h1>
+    <div class="badge">2D + 3D ENGINE</div>
+  </header>
+ 
+  <!-- ══ APP LAYOUT ══ -->
+  <div class="app">
+ 
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar">
+ 
+      <!-- State Controls -->
+      <div class="section">
+        <div class="section-title">State Control</div>
+        <div class="input-group">
+          <div class="field-wrap">
+            <label>State Name</label>
+            <input type="text" id="state" placeholder="e.g. q0">
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="addState()">+ Add State</button>
+            <button class="btn btn-orange"  onclick="setStartState()">▶ Start</button>
+            <button class="btn btn-green"   onclick="setAcceptState()">✓ Accept</button>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Transition Controls -->
+      <div class="section">
+        <div class="section-title">Transition</div>
+        <div class="input-group">
+          <div class="input-row">
+            <div class="field-wrap">
+              <label>From</label>
+              <input type="text" id="from" placeholder="q0">
+            </div>
+            <div class="field-wrap">
+              <label>Symbol</label>
+              <input type="text" id="symbol" placeholder="a">
+            </div>
+            <div class="field-wrap">
+              <label>To</label>
+              <input type="text" id="to" placeholder="q1">
+            </div>
+          </div>
+          <button class="btn btn-purple btn-full" onclick="addTransition()">→ Add Transition</button>
+        </div>
+      </div>
+ 
+      <!-- Simulate Controls -->
+      <div class="section">
+        <div class="section-title">Simulation</div>
+        <div class="input-group">
+          <div class="field-wrap">
+            <label>Input String</label>
+            <input type="text" id="inputString" placeholder="e.g. aba">
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" style="flex:1" onclick="simulate()">▶ Run</button>
+            <button class="btn btn-red" onclick="resetGraph()">↺ Reset</button>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- FA Info -->
+      <div class="section">
+        <div class="section-title">FA State Info</div>
+        <div class="info-box">
+          <div class="info-row">
+            <span class="info-key">TOTAL STATES</span>
+            <span class="info-val" id="infoStates">0</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">START STATE</span>
+            <span class="info-val orange" id="infoStart">—</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">ACCEPT STATES</span>
+            <span class="info-val green" id="infoAccept">—</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">TRANSITIONS</span>
+            <span class="info-val" id="infoTrans">0</span>
+          </div>
+        </div>
+        <hr class="divider">
+        <div class="section-title" style="margin-top:4px">States</div>
+        <div class="tag-list" id="tagList"></div>
+      </div>
+ 
+      <!-- Status Badge -->
+      <div id="statusDisplay" class="status-display"></div>
+ 
+      <!-- Simulation Log -->
+      <div class="section" style="flex:1">
+        <div class="section-title">Simulation Log</div>
+        <div class="step-log" id="stepLog">
+          <div class="empty-log">No simulation run yet</div>
+        </div>
+      </div>
+ 
+    </aside>
+ 
+    <!-- ══ MAIN CONTENT ══ -->
+    <main class="main-content">
+      <div class="views">
+ 
+        <!-- 2D Cytoscape View -->
+        <div class="cy-wrap">
+          <div class="view-label">2D GRAPH VIEW</div>
+          <div id="cy"></div>
+        </div>
+ 
+        <!-- 3D Three.js View -->
+        <div class="three-wrap">
+          <div class="view-label">3D VISUALIZATION</div>
+          <div id="threeContainer"></div>
+          <div class="three-overlay">DRAG TO ROTATE</div>
+        </div>
+ 
+      </div>
+    </main>
+ 
+  </div><!-- /.app -->
+ 
+  <!-- Script -->
+  <script src="script.js"></script>
+ 
+</body>
+</html>
