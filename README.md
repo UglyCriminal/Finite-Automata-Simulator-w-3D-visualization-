@@ -64,7 +64,8 @@ It allows users to create states, define transitions, and simulate input strings
 (Add your screenshot here 👇)
 
 ```
-![App Screenshot](screenshot.png)
+![App Screensh<img width="444" height="546" alt="Screenshot 2026-04-05 124127" src="https://github.com/user-attachments/assets/f95533cb-1201-43ab-b6af-dc1704f8b1c8" />
+ot](screenshot.png)
 ```
 
 ---
@@ -90,7 +91,7 @@ open index.html
 
 ## 👨‍💻 Author
 
-**Nitin**
+**SUMEDHA CHOUDHARY**
 
 ---
 
